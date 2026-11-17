@@ -1,8 +1,18 @@
-@import "tailwindcss";
-
+@import "tailwindcss" important;
 /* CSS personnalisé */
-
 .site-title{
     font-size: 2rem;
     font-weight: bold;
+}
+
+p, ul, ol, table{
+    margin-bottom: 1rem;
+}
+
+h1, h2, h3{
+    padding-bottom: 1rem;
+}
+
+h4, h5, h6{
+    padding-bottom: 0.5rem;
 }

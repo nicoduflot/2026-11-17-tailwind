@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installation et bases | Formation Tailwind</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+</head>
+
+<body>
+    <header class="bg-gray-900 text-gray-50">
+        <div class="container mx-auto p-2">
+            <span class="site-title">Formation Tailwind</span>
+        </div>
+    </header>
+    <nav class="bg-gray-900 text-gray-50">
+        <div class="container mx-auto p-2">
+            <div>
+                <ul class="md:flex flex-wrap justify-start mb-0">
+                    <li class="hover:bg-gray-50 hover:text-gray-900">
+                        <a href="./index.html" title="installation et bases" class="block px-2">Tailwind</a>
+                    </li>
+                    <li class="hover:bg-gray-50 hover:text-gray-900">
+                        <a href="./row.html" title="Le système lignes - colonnes" class="block px-2">Lignes -
+                            Colonnes</a>
+                    </li>
+                    <li class="hover:bg-gray-50 hover:text-gray-900">
+                        <a href="./composants.html" title="Les composants de tailwind" class="block px-2">Composants</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container mx-auto p-2">
+        <h1 class="text-3xl font-bold">Lignes et colonnes</h1>
+        <aside>
+            <ul class="md:columns-2">
+                <li>
+                    <a class="underline font-bold hover:text-blue-600" href="#utiliser-colonnes">Utiliser les
+                        colonnes</a>
+                    <ul class="ps-3">
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#columns-nombre">Classe
+                                <code>columns-&lt;nombre&gt;</code></a>
+                        </li>
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#break-options">Classe
+                                <code>break-&lt;option&gt;</code></a>
+                        </li>
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#gap-x-nombre">Gap horizontal
+                                <code>gap-x-&lt;option&gt;</code></a>
+                        </li>
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#gap-vertical">Régler le gap
+                                vertical</a>
+                        </li>
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#pas-de-span">Pas de propriété
+                                <code>span</code></a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="underline font-bold hover:text-blue-600" href="#utiliser-colonnes">Utiliser les
+                        colonnes</a>
+                    <ul class="ps-3">
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#columns-nombre">Classe
+                                <code>columns-&lt;nombre&gt;</code></a>
+                        </li>
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#break-options">Classe
+                                <code>break-&lt;option&gt;</code></a>
+                        </li>
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#gap-x-nombre">Gap horizontal
+                                <code>gap-x-&lt;option&gt;</code></a>
+                        </li>
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#gap-vertical">Régler le gap
+                                vertical</a>
+                        </li>
+                        <li>
+                            <a class="underline font-bold hover:text-blue-600" href="#gap-vertical">Pas de propriété
+                                <code>span</code></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <section>
+            <header class="text-2xl font-bold">
+                <h2 id="utiliser-colonnes">Utiliser les colonnes</h2>
+            </header>
+            <div class="columns-1 lg:columns-2 xl:columns-3">
+                <article class="border border-pink-600 p-2 m-1 break-inside-avoid-column">
+                    <header>
+                        <h3 id="columns-nombre">
+                            Classe <code>columns-&lt;nombre&gt;</code>
+                        </h3>
+                    </header>
+                    <p>
+                        En utilisant la classe <code>columns-x</code> (<i>où x est le nombre de colonnes désiré</i>), on va
+                        définir le nombre d'éléments dans l'odre des affichage
+                        d'écran, en commençant par l'affichage smartphone jusqu'aux et en
+                        remontant jusqu'aux écrans larges et plus.
+                    </p>
+                    <p>
+                        <code>
+                  &lt;section class="my-1
+                  <mark>columns-1 lg:columns-2 xl:columns-3</mark> gap-1"&gt;
+                </code>
+                    </p>
+                </article>
+                <article class="border border-pink-600 p-2 m-1 break-inside-avoid-column">
+                    <header>
+                        <h3 id="break-options">Classe <code>break-&lt;option&gt;</code></h3>
+                    </header>
+                    <p>
+                        Demander des colonnes va, par défaut, "casser" les éléments pour
+                        qu'ils aient tous la même hauteur. Pour éviter cela, il faudra
+                        ajouter par exemple aux éléments à l'intérieur la classe
+                        <code>break-inside-avoid-column</code>
+                    </p>
+                    <p>
+                        <code>
+                  &lt;article class="rounded-sm p-2 border border-gray-900
+                  <mark>break-inside-avoid-column</mark>"&gt;
+                </code>
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae minus
+                        expedita aliquid, eum iste porro nemo alias quas voluptatum
+                        quibusdam ea pariatur excepturi natus eos vel autem. Quaerat,
+                        corrupti animi.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae minus
+                        expedita aliquid, eum iste porro nemo alias quas voluptatum
+                        quibusdam ea pariatur excepturi natus eos vel autem. Quaerat,
+                        corrupti animi.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae minus
+                        expedita aliquid, eum iste porro nemo alias quas voluptatum
+                        quibusdam ea pariatur excepturi natus eos vel autem. Quaerat,
+                        corrupti animi.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae minus
+                        expedita aliquid, eum iste porro nemo alias quas voluptatum
+                        quibusdam ea pariatur excepturi natus eos vel autem. Quaerat,
+                        corrupti animi.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-900 text-gray-50">
+        <div class="container mx-auto p-2">
+            <nav>
+                <b>Liens 1</b>
+                <ul>
+                    <li><a href="#">lien 01</a></li>
+                    <li><a href="#">lien 02</a></li>
+                    <li><a href="#">lien 03</a></li>
+                    <li><a href="#">lien 04</a></li>
+                    <li><a href="#">lien 05</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <b>Liens 2</b>
+                <ul>
+                    <li><a href="#">lien 01</a></li>
+                    <li><a href="#">lien 02</a></li>
+                    <li><a href="#">lien 03</a></li>
+                    <li><a href="#">lien 04</a></li>
+                    <li><a href="#">lien 05</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <b>Liens 3</b>
+                <ul>
+                    <li><a href="#">lien 01</a></li>
+                    <li><a href="#">lien 02</a></li>
+                    <li><a href="#">lien 03</a></li>
+                    <li><a href="#">lien 04</a></li>
+                    <li><a href="#">lien 05</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container mx-auto p-2">
+            <p>
+                <span class="font-bold">&copy; DAWAN 11/2026</span>
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
