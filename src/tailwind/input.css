@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* CSS personnalisé */
+
+.site-title{
+    font-size: 2rem;
+    font-weight: bold;
+}

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installation et bases | Formation Tailwind</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container mx-auto p-2">
+        <span class="text-4xl font-bold">Formation Tailwin</span>
+      </div>
+    </header>
+    <nav>
+      <div class="container mx-auto">
+        <ul class="flex flex-wrap justify-start gap-2">
+          <li class="hover:bg-amber-400">
+            <a href="./index.html" title="installation et bases" class=" px-2">Tailwind</a>
+          </li>
+          <li class="hover:bg-amber-400">
+            <a href="./row.html" title="Le système lignes - colonnes"
+               class=" px-2">Lignes - Colonnes</a
+            >
+          </li>
+          <li class="hover:bg-amber-400">
+            <a href="./composants.html" title="Les composants de tailwind"
+               class=" px-2">Composants</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main class="container mx-auto">
+      <h1 class="text-3xl font-bold">Installation et bases</h1>
+      <section>
+        <div>
+          <article>
+            <header>
+              <h2>Installation</h2>
+            </header>
+            <p>
+              Il est possible d'installer tailwind sur différents frameworks.
+              Dans ce projet, nous allons l'installer sur un projet sans
+              framework, en utilisant Tailwint CLI
+            </p>
+            <ol>
+              <li>
+                Il faut utiliser un terminal et se rendre à la racine du projet.
+              </li>
+              <li>
+                Une fois à cet endroit, il faut utiliser npm pour laner la
+                commande suivante :<br /><code>
+                  npm install tailwindcss @tailwindcss/cli</code
+                >
+              </li>
+              <li>
+                Dans le projet, prévoir un fichier css d'entrée, par exemple à
+                cet endroit : <br /><code>./src/tailwind/intput.css</code>, sur
+                lequel on inscrit la ligne suivante :
+              </li>
+            </ol>
+            <p>
+              <code>@import "tailwindcss";</code>
+            </p>
+            <ol start="4">
+              <li>
+                A nouveau dans le terminal, on va lui demander de "surveiller"
+                le fichier input, et d'écrire le css compilé par tailwind sur un
+                autre fichier css, ici il sera dans <br />
+                <code>./src/css/style.css</code>, en utilisant la commande
+                suivante : <br />
+                <code
+                  >npx @tailwindcss/cli -i ./src/tailwind/input.css -o
+                  ./src/css/style.css --watch</code
+                >
+              </li>
+            </ol>
+            <h3>Support Visual Studio Code</h3>
+            <p>
+              Pour VS Code, il est recommandé d'utiliser le pluggin *Tailwind
+              CSS intelliSense, qui ajoutera :
+            </p>
+            <ul>
+              <li>Autocomplétion</li>
+              <li>Affichage des erreurs d'utilisation</li>
+              <li>affichage du css créé au survol</li>
+              <li>coloration syntaxique</li>
+            </ul>
+            <p>
+              Il est aussi recommendé d'utiliser le pluggin Prettier, il va
+              trier les classes dans les éléments dans l'ordre recommandé par le
+              framework.
+            </p>
+            <p>
+              Les IDE de la suite Jetbrains et Zed supportent aussi tailwind.
+            </p>
+          </article>
+        </div>
+        <div>
+          <article>
+            <header>
+              <h2>Les classes utilitaires</h2>
+            </header>
+            <p>
+              Quand on a compilé une première fois le CSS tailwind, il nous
+              génère un fichier contenant un reset css drastique :
+            </p>
+            <ul>
+              <li>tous les éléments appliquent la même taille de police</li>
+              <li>tous les éléments appliquent le même poids de police</li>
+              <li>etc.</li>
+            </ul>
+            <h3>Fonctionnement de tailwind (en mode cli)</h3>
+            <p>
+              Le terminal scan les fichiers et si un fichier est lié au CSS de
+              sortie, ici style.css, dès qu'une classe de tailwind est ajoutée a
+              ce fichier, il compile le CSS nécessaire et l'ajoute au fichier de
+              sortie CSS.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container mx-auto">
+        <p>
+          <span class="font-bold">&copy; DAWAN 11/2026</span>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
