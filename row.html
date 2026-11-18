@@ -40,51 +40,20 @@
                     <a class="underline font-bold hover:text-blue-600" href="#utiliser-colonnes">Utiliser les
                         colonnes</a>
                     <ul class="ps-3">
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#columns-nombre">Classe
-                                <code>columns-&lt;nombre&gt;</code></a>
-                        </li>
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#break-options">Classe
-                                <code>break-&lt;option&gt;</code></a>
-                        </li>
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#gap-x-nombre">Gap horizontal
-                                <code>gap-x-&lt;option&gt;</code></a>
-                        </li>
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#gap-vertical">Régler le gap
-                                vertical</a>
-                        </li>
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#pas-de-span">Pas de propriété
-                                <code>span</code></a>
-                        </li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#columns-nombre">Classe <code>columns-&lt;nombre&gt;</code></a></li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#break-options">Classe <code>break-&lt;option&gt;</code></a></li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#gap-x-nombre">Gap horizontal <code>gap-x-&lt;option&gt;</code></a></li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#gap-vertical">Régler le gap vertical</a></li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#pas-de-span">Pas de propriété <code>span</code></a></li>
                     </ul>
                 </li>
                 <li>
-                    <a class="underline font-bold hover:text-blue-600" href="#utiliser-colonnes">Utiliser les
-                        colonnes</a>
+                    <a class="underline font-bold hover:text-blue-600" href="#utiliser-grilles">Utiliser les grilles</a>
                     <ul class="ps-3">
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#columns-nombre">Classe
-                                <code>columns-&lt;nombre&gt;</code></a>
-                        </li>
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#break-options">Classe
-                                <code>break-&lt;option&gt;</code></a>
-                        </li>
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#gap-x-nombre">Gap horizontal
-                                <code>gap-x-&lt;option&gt;</code></a>
-                        </li>
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#gap-vertical">Régler le gap
-                                vertical</a>
-                        </li>
-                        <li>
-                            <a class="underline font-bold hover:text-blue-600" href="#gap-vertical">Pas de propriété
-                                <code>span</code></a>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#classe-grid">Classe générale <code>grid</code></a></li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#classe-grid-cols">Classe <code>grid-cols</code></a></li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#gap-nombre">Classe <code>gap-&lt;nombre&gt;</code></a></li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#col-span">Classe <code>col-span</code></a></li>
                         </li>
                     </ul>
                 </li>
@@ -94,8 +63,8 @@
             <header class="text-2xl font-bold">
                 <h2 id="utiliser-colonnes">Utiliser les colonnes</h2>
             </header>
-            <div class="columns-1 lg:columns-2 xl:columns-3">
-                <article class="border border-pink-600 p-2 m-1 break-inside-avoid-column">
+            <div class="columns-1 lg:columns-2 xl:columns-3 gap-x-1">
+                <article class="border border-pink-600 p-2 mb-1 break-inside-avoid-column">
                     <header>
                         <h3 id="columns-nombre">
                             Classe <code>columns-&lt;nombre&gt;</code>
@@ -108,13 +77,10 @@
                         remontant jusqu'aux écrans larges et plus.
                     </p>
                     <p>
-                        <code>
-                  &lt;section class="my-1
-                  <mark>columns-1 lg:columns-2 xl:columns-3</mark> gap-1"&gt;
-                </code>
+                        <code>&lt;div class="<mark>columns-1 lg:columns-2 xl:columns-3</mark>"&gt;</code>
                     </p>
                 </article>
-                <article class="border border-pink-600 p-2 m-1 break-inside-avoid-column">
+                <article class="border border-pink-600 p-2 mb-1 break-inside-avoid-column">
                     <header>
                         <h3 id="break-options">Classe <code>break-&lt;option&gt;</code></h3>
                     </header>
@@ -125,34 +91,85 @@
                         <code>break-inside-avoid-column</code>
                     </p>
                     <p>
-                        <code>
-                  &lt;article class="rounded-sm p-2 border border-gray-900
-                  <mark>break-inside-avoid-column</mark>"&gt;
-                </code>
+                        <code>&lt;article class="border border-pink-600 p-2 <mark>break-inside-avoid-column</mark>"&gt;</code>
+                    </p>
+                </article>
+                <article class="border border-pink-600 p-2 mb-1 break-inside-avoid-column">
+                    <header>
+                        <h3 id="gap-x-nombre">Gap horizontal <code>gap-x-&lt;option&gt;</code></h3>
+                    </header>
+                    <p>
+                        On applique la classe <code>gap-x<i>-&lt;nombre&gt;</i></code> à l'élément qui va contenir les
+                        éléments de la grille, selon la valeur ajoutée, on jouera sur l'espace horizontal entre les éléments
+                        à l'intérieur.
+                    </p>
+                    <code>&lt;div class="columns-1 lg:columns-2 xl:columns-3 <mark>gap-x-1</mark>"&gt;</code>
+                </article>
+                <article class="border border-pink-600 p-2 mb-1 break-inside-avoid-column">
+                    <header>
+                        <h3 id="gap-vertical">Régler le gap vertical</code></h3>
+                    </header>
+                    <p>
+                        Avec le système <code>columns</code>, la classe <code>gap</code> ne contrôle que l'espacement
+                        horizontal entre les colonnes (l'équivalent de <code>column-gap</code> en CSS).
                     </p>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae minus
-                        expedita aliquid, eum iste porro nemo alias quas voluptatum
-                        quibusdam ea pariatur excepturi natus eos vel autem. Quaerat,
-                        corrupti animi.
+                        Il faut pour cela régler ajouter la classe <code>gap-x-1</code> au conteneur et une classe de marge
+                        extérieure basse <code>mb-1</code> par exemple pour établir un gap vertical. Ajouter la classe
+                        <code>my-1</code> par exemple, ne donnera pas le résultat escompté.
                     </p>
+                    <code>&lt;article class="border border-pink-600 <mark>mb-1</mark> break-inside-avoid-column"&gt;</code>
+                </article>
+                <article class="border border-pink-600 p-2 mb-1 break-inside-avoid-column">
+                    <header>
+                        <h3 id="pas-de-span">Pas de propriété <code>span</code></h3>
+                    </header>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae minus
-                        expedita aliquid, eum iste porro nemo alias quas voluptatum
-                        quibusdam ea pariatur excepturi natus eos vel autem. Quaerat,
-                        corrupti animi.
+                        Le système de colonnes dans Tailwind CSS (<code>columns-*</code>) est basé sur la propriété CSS
+                        <code>columns</code>, qui est conçue pour créer des mises en page de type magazine/journal avec du
+                        contenu qui s'écoule naturellement d'une colonne à l'autre. Ce n'est pas un système de grille.
                     </p>
+                    <h4>Le problème</h4>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae minus
-                        expedita aliquid, eum iste porro nemo alias quas voluptatum
-                        quibusdam ea pariatur excepturi natus eos vel autem. Quaerat,
-                        corrupti animi.
+                        Le système <code>columns</code> ne permet pas de faire "span" un élément sur plusieurs colonnes de
+                        la même manière que Grid. C'est une limitation du CSS multi-column layout lui-même, pas de Tailwind.
                     </p>
+                </article>
+            </div>
+        </section>
+        <section>
+            <header class="text-2xl font-bold">
+                <h2 id="utiliser-grilles">Utiliser les grilles</h2>
+            </header>
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                <article class="border border-pink-600 p-2">
+                    <header>
+                        <h3 id="classe-grid">Classe générale <code>grid</code></h3>
+                    </header>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae minus
-                        expedita aliquid, eum iste porro nemo alias quas voluptatum
-                        quibusdam ea pariatur excepturi natus eos vel autem. Quaerat,
-                        corrupti animi.
+                        On applique la classe générale grid à l'élément qui va contenir les éléments de la grille, ensuite il faut configurer le nombre de colonnes à l'intérieur, en commençant par l'affichage smartphone et en remontant jusqu'aux écrans larges et plus.
+                    </p>
+                    <code>
+                        &lt;section class="<mark>grid</mark>"&gt;
+                    </code>
+                </article>
+                <article class="border border-pink-600 p-2">
+                    <header>
+                        <h3 id="classe-grid-cols">Classe <code>grid-cols</code></h3>
+                    </header>
+                    <p>
+                        On applique la classe <code>grid-cols</code> à l'élément qui va contenir les éléments de la grille, pour configurer le nombre de colonnes souhaitées dans l'élément selon les différents points de ruptures.
+                    </p>
+                    <code>
+                        &lt;section class="grid <mark> grid-cols-1 lg:grid-cols-2 xl:grid-cols-3</mark>"&gt;
+                    </code>
+                </article>
+                <article class="border border-pink-600 p-2">
+                    <header>
+                        <h3 id="classe-grid-cols">Classe <code>grid-cols</code></h3>
+                    </header>
+                    <p>
+                        On applique la classe <code>grid-cols</code> à l'élément qui va contenir les éléments de la grille, pour configurer le nombre de colonnes souhaitées dans l'élément selon les différents points de ruptures.
                     </p>
                 </article>
             </div>

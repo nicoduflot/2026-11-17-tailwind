@@ -150,5 +150,69 @@
             </p>
         </div>
     </div>
+    <style>
+        .grille{
+            /*border: 1px solid fuchsia;*/
+            min-width: 100%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            /*row-gap: 1rem;
+            column-gap: 2rem;*/
+            gap: 0.5rem;
+        }
+
+        .g-div{
+            padding: 0.5rem;
+            margin: 0.25rem;
+            border: 1px solid black;
+        }
+
+        .g-div:nth-of-type(odd){
+            background-color: blanchedalmond;
+        }
+
+        
+
+        @media (min-width: 576px) {
+            .grille{
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+           .grille{
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .grille{
+                 grid-template-columns: repeat(4, 1fr);
+             }            
+        }
+        
+        @media (min-width: 1200px) {
+            .grille{
+                 grid-template-columns: repeat(5, 1fr);
+             } 
+        }
+        
+        @media (min-width: 1600px) {
+            .grille{
+                 grid-template-columns: repeat(6, 1fr);
+             } 
+        }
+    </style>
+    <div class="grille" style="margin-top: 3rem;">
+        <div class="g-div">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem officiis quasi odio aliquam magni, placeat maiores? Magni culpa excepturi atque optio, blanditiis recusandae neque, eius quas perferendis doloremque accusantium officia!</div>
+        <div class="g-div">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex reiciendis amet optio tempora modi quibusdam consectetur, sunt autem necessitatibus dolore nihil, hic animi aliquam iure neque illum atque aspernatur. Repudiandae?</div>
+        <div class="g-div">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate sapiente iste id! Laboriosam cumque, ad placeat iure dignissimos labore a eius nemo accusamus dolor et sed. Minima ducimus quia molestias.</div>
+        <div class="g-div">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam laboriosam ducimus illum harum inventore. Consectetur quis repellat quidem delectus, tempore natus nemo recusandae sed laborum aspernatur tenetur iusto, alias ratione.</div>
+        <div class="g-div">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam laboriosam ducimus illum harum inventore. Consectetur quis repellat quidem delectus, tempore natus nemo recusandae sed laborum aspernatur tenetur iusto, alias ratione.</div>
+        <div class="g-div">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam laboriosam ducimus illum harum inventore. Consectetur quis repellat quidem delectus, tempore natus nemo recusandae sed laborum aspernatur tenetur iusto, alias ratione.</div>
+        <div class="g-div">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam laboriosam ducimus illum harum inventore. Consectetur quis repellat quidem delectus, tempore natus nemo recusandae sed laborum aspernatur tenetur iusto, alias ratione.</div>
+        <div class="g-div">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam laboriosam ducimus illum harum inventore. Consectetur quis repellat quidem delectus, tempore natus nemo recusandae sed laborum aspernatur tenetur iusto, alias ratione.</div>
+    </div>
 </body>
 </html>
