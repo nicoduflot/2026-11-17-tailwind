@@ -1,0 +1,10 @@
+@layer components {
+    nav.navigation ul{
+        @apply md:flex flex-wrap justify-start mb-0;
+        li{
+            a{
+                @apply block !ps-2 !pe-2;
+            }
+        }
+    }
+}

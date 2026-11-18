@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les composants | Formation Tailwind</title>
+    <link rel="stylesheet" href="./src/css/cs-style.css" />
+</head>
+<body>
+    <header class="bg-gray-900 text-gray-50">
+        <div class="container mx-auto p-2">
+            <span class="site-title">Formation Tailwind</span>
+        </div>
+    </header>
+    <nav class="navigation bg-gray-900 text-gray-50">
+        <div class="container mx-auto p-2">
+            <ul>
+                <li class="hover:bg-gray-50 hover:text-gray-900">
+                    <a href="./index.html" title="installation et bases">Tailwind</a>
+                </li>
+                <li class="hover:bg-gray-50 hover:text-gray-900">
+                    <a href="./row.html" title="Le système lignes - colonnes">Lignes -
+                        Colonnes</a>
+                </li>
+                <li class="hover:bg-gray-50 hover:text-gray-900">
+                    <a href="./composants.html" title="Les composants de tailwind">Composants</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="container mx-auto p-2">
+        <h1>Lignes et colonnes</h1>
+        <aside>
+            <ul>
+                <li>
+                    <a class="underline font-bold hover:text-blue-600" href="#creer-composants">Créer des composants</a>
+                </li>
+                <li>
+                    <a class="underline font-bold hover:text-blue-600" href="#integrer-composants">Intégrer les composants</a>
+                </li>
+                <li>
+                    <a class="underline font-bold hover:text-blue-600" href="#extraire-composants">Extraire les composants</a>
+                </li>
+            </ul>
+        </aside>
+        <section>
+            <article class="border border-pink-600 p-2 m-1">
+                <header class="text-2xl font-bold">
+                    <h2 id="creer-composants">Créer des composants</h2>
+                </header>
+                <p>
+                    Un composant (ou module) consiste à créer des fichier css séparés pour créer des éléments réutilisables afin de créer une bibliothèque.
+                </p>
+                <p>
+                    Cela évite principalement d'avoir à copier / coller une suite de classes Tailwind pour que tous les éléments semblable d'une page aient le même style.
+                </p>
+                <p>
+                    Il faut créer tout d'abord un fichier d'input pour Tailwind, dans lequel on va au choix prendre tout le CSS de base de tailwind ou comme dans l'exemple suivant une partie des éléments.
+                </p>
+<pre class="overflow-auto"><code>
+// Structure des fichiers dans ce projet
+src/
+ ├── css/
+ |    └── cs-style.css          // Fichier de sortie généré par Tailwind
+ |
+ └── tailwind/                  // répertoire des fichiers a compiler pour la sortie
+       ├── components/          // répertoire des composants réutilisables
+       |    ├── buttons.css     
+       |    ├── navigation.css 
+       |    └── typography.css
+       └── cs-input.css         // fichier principal de création du fichier de sortie
+//
+</code></pre>
+                <p>
+                    Une fois tous les fichiers créés, il faut écrire les composants en CSS en utilisant <code>@layer</code>, qui permet de créer des classes réutilisables.
+                </p>
+                <p>
+                    En CSS, @layer (les calques de cascade) sert à contrôler l'ordre de priorité de vos règles CSS sans avoir à utiliser !important ni à vous soucier de la complexité des sélecteurs.
+                </p>
+                <p>
+                    Imaginez-le comme une pile de feuilles transparentes : la feuille posée tout en haut l'emporte toujours sur celles du dessous, peu importe la longueur ou la précision du sélecteur écrit dessus.
+                </p>
+                <p>
+                    Comme il faut essayer de réutiliser l'écosystème de Tailwind, on peut implémenter dans ces classes <q>maison</q> les classe déjà prêtes de Tailwind grace à <code>@apply</code>
+                </p>
+                <p>
+                    @apply est une directive de Tailwind qui permet de regrouper plusieurs classes utilitaires (comme flex, bg-blue-500, p-4) à l'intérieur d'une classe CSS classique.
+                </p>
+                <p>
+                    C'est un raccourci pour éviter de répéter la même longue liste de classes utilitaires dans votre HTML.
+                </p>
+<pre class="overflow-auto"><code>
+// buttons.css
+@layer components {
+    .btn-primary{
+        @apply 
+            px-4 py-2 rounded font-bold 
+            bg-blue-600 text-white 
+            transition duration-200
+            hover:bg-blue-700
+            ;
+    }
+
+    <span class="text-green-900">/*
+    .btn-primary en sortie cs-style.css :
+
+    .btn-primary {
+        border-radius: 0.25rem;
+        background-color: var(--color-blue-600);
+        padding-inline: calc(var(--spacing) * 4);
+        padding-block: calc(var(--spacing) * 2);
+        --tw-font-weight: var(--font-weight-bold);
+        font-weight: var(--font-weight-bold);
+        color: var(--color-white);
+        transition-property: 
+            color, background-color, border-color, 
+            outline-color, text-decoration-color, 
+            fill, stroke, --tw-gradient-from, 
+            --tw-gradient-via, --tw-gradient-to, 
+            opacity, box-shadow, transform, translate, 
+            scale, rotate, filter, -webkit-backdrop-filter, 
+            backdrop-filter, display, content-visibility, 
+            overlay, pointer-events;
+        transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+        transition-duration: var(--tw-duration, var(--default-transition-duration));
+        --tw-duration: 200ms;
+        transition-duration: 200ms;
+        &:hover {
+        @media (hover: hover) {
+            background-color: var(--color-blue-700);
+        }
+    }
+  }
+    
+    */</span>
+    
+    .btn-secondary{
+        @apply 
+            px-4 py-2 rounded font-bold 
+            bg-gray-600 text-white 
+            transition duration-200 
+            hover:bg-gray-700
+            ;
+    }
+    
+    .btn-outline-primary{
+        @apply 
+            px-4 py-2 rounded font-bold
+            border-2 border-blue-600 text-blue-600 hover:border-blue-700 hover:text-blue-700
+            transition duration-200
+            ;
+    }
+}
+</code></pre>
+            </article>
+            <article class="border border-pink-600 p-2 m-1">
+                <header class="text-2xl font-bold">
+                    <h2 id="integrer-composants">Intégrer les composants</h2>
+                </header>
+                <p>
+                    Pour Intégrer les composants, il est possible de créer le fichier d'entrée avec seulement quelques éléments de Tailwind plutôt que toute la structure.
+                </p>
+                <p>
+                    Au lieu d'utiliser <code>@import "tailwindcss";</code> on utilisera : 
+                </p>
+<pre class="overflow-auto"><code>
+<span class="text-green-900">// fichier cs-input.css</span>
+@import "tailwindcss/theme.css"; <span class="text-green-900">/* les "fonctions" qui permettent de générer les éléments particulier de Tailwind */</span>
+@import "tailwindcss/preflight"; <span class="text-green-900">/* @tailwind base; */</span>
+@import "tailwindcss/utilities.css";
+
+<span class="text-green-900">// intégration des fichiers de composants </span>
+@import "./components/buttons.css";
+@import "./components/navigation.css";
+@import "./components/typography.css";
+</code></pre>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>
+                        tailwindcss/theme.css : Le socle des "Design Tokens" (Variables CSS) <br />
+                        Ce fichier contient toutes les variables CSS par défaut de Tailwind (les couleurs comme --color-blue-600, les espacements, les tailles de police, les ombres, les points de rupture pour le responsive, etc.).
+                    </li>
+                    <li>
+                        tailwindcss/prefligh : Le reset CSS de base (anciennement @tailwind base;)
+                    </li>
+                    <li>
+                        tailwindcss/utilities.css : Le générateur de toutes les classes utilitaires (p-4, flex, etc.)
+                    </li>
+                </ol>
+                <p>
+                    Une fois que les composants ont été écrits et intégrés, on peut les utiliser
+                </p>
+                <p>
+                    <button class="btn btn-primary">button.btn.btn-primary</button> 
+                    <button class="btn btn-secondary">button.btn.btn-secondary</button> 
+                    <button class="btn btn-outline-primary">button.btn.btn-outline-primary</button> 
+                </p>
+            </article>
+            <article class="border border-pink-600 p-2 m-1">
+                <header class="text-2xl font-bold">
+                    <h2 id="extraire-composants">Extraire les composants</h2>
+                </header>
+                
+            </article>
+        </section>
+    </main>
+</body>
+</html>

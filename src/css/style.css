@@ -9,16 +9,23 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-pink-600: oklch(59.2% 0.249 0.584);
     --color-gray-50: oklch(98.5% 0.002 247.839);
+    --color-gray-600: oklch(44.6% 0.03 256.802);
+    --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-900: oklch(21% 0.034 264.665);
+    --color-white: #fff;
     --spacing: 0.25rem;
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
     --font-weight-bold: 700;
-    --radius-sm: 0.25rem;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -172,8 +179,8 @@
   }
 }
 @layer utilities {
-  .collapse {
-    visibility: collapse !important;
+  .row-span-2 {
+    grid-row: span 2 / span 2 !important;
   }
   .container {
     width: 100% !important;
@@ -211,41 +218,14 @@
   .block {
     display: block !important;
   }
-  .flex {
-    display: flex !important;
-  }
   .grid {
     display: grid !important;
-  }
-  .table {
-    display: table !important;
-  }
-  .w-10 {
-    width: calc(var(--spacing) * 10) !important;
-  }
-  .w-fit {
-    width: fit-content !important;
-  }
-  .w-full {
-    width: 100% !important;
-  }
-  .border-collapse {
-    border-collapse: collapse !important;
-  }
-  .resize {
-    resize: both !important;
   }
   .columns-1 {
     columns: 1 !important;
   }
-  .columns-2 {
-    columns: 2 !important;
-  }
   .break-inside-avoid-column {
     break-inside: avoid-column !important;
-  }
-  .break-inside-avoid-page {
-    break-inside: avoid-page !important;
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
@@ -265,15 +245,9 @@
   .scroll-smooth {
     scroll-behavior: smooth !important;
   }
-  .rounded-sm {
-    border-radius: var(--radius-sm) !important;
-  }
   .border {
     border-style: var(--tw-border-style) !important;
     border-width: 1px !important;
-  }
-  .border-gray-900 {
-    border-color: var(--color-gray-900) !important;
   }
   .border-pink-600 {
     border-color: var(--color-pink-600) !important;
@@ -286,9 +260,6 @@
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2) !important;
-  }
-  .py-2 {
-    padding-block: calc(var(--spacing) * 2) !important;
   }
   .ps-3 {
     padding-inline-start: calc(var(--spacing) * 3) !important;
@@ -311,10 +282,6 @@
   .underline {
     text-decoration-line: underline !important;
   }
-  .outline {
-    outline-style: var(--tw-outline-style) !important;
-    outline-width: 1px !important;
-  }
   @media (hover: hover) {
     .hover\:bg-gray-50:hover {
       background-color: var(--color-gray-50) !important;
@@ -327,32 +294,59 @@
     }
   }
   @media (width >= 48rem) {
+    .md\:col-span-2 {
+      grid-column: span 2 / span 2 !important;
+    }
     .md\:flex {
       display: flex !important;
     }
     .md\:columns-2 {
       columns: 2 !important;
     }
+    .md\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
   }
   @media (width >= 64rem) {
+    .lg\:col-span-2 {
+      grid-column: span 2 / span 2 !important;
+    }
+    .lg\:col-span-3 {
+      grid-column: span 3 / span 3 !important;
+    }
+    .lg\:row-span-1 {
+      grid-row: span 1 / span 1 !important;
+    }
     .lg\:columns-2 {
       columns: 2 !important;
     }
     .lg\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
+    .lg\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
   }
   @media (width >= 80rem) {
+    .xl\:col-span-2 {
+      grid-column: span 2 / span 2 !important;
+    }
+    .xl\:col-span-4 {
+      grid-column: span 4 / span 4 !important;
+    }
     .xl\:columns-3 {
       columns: 3 !important;
     }
     .xl\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     }
+    .xl\:grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
   }
 }
 .site-title {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: bold;
 }
 p, ul, ol, table {
@@ -373,17 +367,11 @@ h4, h5, h6 {
   syntax: "*";
   inherits: false;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: block))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
       --tw-font-weight: initial;
-      --tw-outline-style: solid;
     }
   }
 }

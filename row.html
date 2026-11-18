@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Installation et bases | Formation Tailwind</title>
+    <title>Lignes et colonnes | Formation Tailwind</title>
     <link rel="stylesheet" href="./src/css/style.css" />
 </head>
 
@@ -54,7 +54,7 @@
                         <li><a class="underline font-bold hover:text-blue-600" href="#classe-grid-cols">Classe <code>grid-cols</code></a></li>
                         <li><a class="underline font-bold hover:text-blue-600" href="#gap-nombre">Classe <code>gap-&lt;nombre&gt;</code></a></li>
                         <li><a class="underline font-bold hover:text-blue-600" href="#col-span">Classe <code>col-span</code></a></li>
-                        </li>
+                        <li><a class="underline font-bold hover:text-blue-600" href="#row-span">Classe <code>row-span</code></a></li>
                     </ul>
                 </li>
             </ul>
@@ -141,8 +141,8 @@
             <header class="text-2xl font-bold">
                 <h2 id="utiliser-grilles">Utiliser les grilles</h2>
             </header>
-            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                <article class="border border-pink-600 p-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1">
+                <article class="border border-pink-600 p-2 row-span-2 lg:row-span-1 lg:col-span-2">
                     <header>
                         <h3 id="classe-grid">Classe générale <code>grid</code></h3>
                     </header>
@@ -153,7 +153,7 @@
                         &lt;section class="<mark>grid</mark>"&gt;
                     </code>
                 </article>
-                <article class="border border-pink-600 p-2">
+                <article class="border border-pink-600 p-2 xl:col-span-2">
                     <header>
                         <h3 id="classe-grid-cols">Classe <code>grid-cols</code></h3>
                     </header>
@@ -164,13 +164,34 @@
                         &lt;section class="grid <mark> grid-cols-1 lg:grid-cols-2 xl:grid-cols-3</mark>"&gt;
                     </code>
                 </article>
-                <article class="border border-pink-600 p-2">
+                
+                <article class="border border-pink-600 p-2 xl:col-span-2">
                     <header>
-                        <h3 id="classe-grid-cols">Classe <code>grid-cols</code></h3>
+                        <h3 id="gap-nombre">Classe <code>gap-&lt;nombre&gt;</code></h3>
                     </header>
                     <p>
-                        On applique la classe <code>grid-cols</code> à l'élément qui va contenir les éléments de la grille, pour configurer le nombre de colonnes souhaitées dans l'élément selon les différents points de ruptures.
+                        On applique la classe <code>gap<i>-&lt;nombre&gt;</i></code> à l'élément qui va contenir les éléments de la grille, selon la valeur ajoutée, on jouera sur l'espace entre et au-dessus/en-dessous des éléments à l'intérieur.
                     </p>
+                </article>
+                <article class="border border-pink-600 p-2 md:col-span-2">
+                    <header>
+                        <h3 id="col-span">Classe <code>col-span</code></h3>
+                    </header>
+                    <p>
+                        Pour qu'un élément prenne x colonnes de large, il faut ajouter à cet élément une classe <code>col-span-x</code>, où <i>x</i> est le nombre de colonnes.
+                    </p>
+                    <p>
+                        Il faut préciser la constrution des colonnes pour que les éléments soient cohérent, surtout qu'une fois qu'une classe applique un nombre de colonne, tant qu'on ne lui indique pas le contraire, elle garde cette configuration.
+                    </p>
+                </article>
+                <article class="border border-pink-600 p-2 md:col-span-2 lg:col-span-3 xl:col-span-4">
+                    <header>
+                        <h3 id="row-span">Classe <code>row-span</code></h3>
+                    </header>
+                    <p>
+                        Pour qu'un élément prenne x ligne de hauteur, il faut ajouter à cet élément une classe <code>row-span-x</code>, où <i>x</i> est le nombre de ligne sur lesquelles il s'étend.
+                    </p>
+                    
                 </article>
             </div>
         </section>
