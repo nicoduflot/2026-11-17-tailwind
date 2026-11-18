@@ -1,6 +1,9 @@
 @import "tailwindcss/theme.css"; /* les "fonctions" qui permettent de générer les éléments particulier de Tailwind */
 @import "tailwindcss/preflight"; /* @tailwind base; */
 @import "tailwindcss/utilities.css";
+/* Les composants spéciaux */
 @import "./components/buttons.css";
 @import "./components/navigation.css";
-@import "./components/typography.css";
+@import "./components/cs-classes.css";
+/* surcharge des balise natives */
+@import "./base/typography.css";

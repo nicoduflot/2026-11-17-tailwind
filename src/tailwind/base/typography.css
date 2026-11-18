@@ -1,0 +1,42 @@
+/*
+Quand on surcharge le somportement de balises, on le fait dans base
+*/
+@layer base {
+    code{
+        @apply text-pink-600;
+    }
+
+    p, ul, ol, table, pre{
+        @apply !mb-[1rem];
+    }
+
+    ol:not(nav.navigation ol, ol.toc), ul:not(nav.navigation ul, ul.toc){
+        @apply !list-inside !space-y-2;
+    }
+
+    ol:not(nav.navigation ol, ol.toc){
+        @apply  !list-decimal;
+    }
+
+    ul:not(nav.navigation ul, ul.toc){
+        @apply !list-disc;
+    }
+
+    h1 {
+        @apply !text-3xl !font-bold;
+    }
+    h2{
+        @apply !text-2xl !font-bold;
+    }
+    h1, h2, h3{
+        @apply !mb-[1rem] !font-bold;
+    }
+
+    h4, h5, h6{
+        @apply !mb-[0.5rem] !font-bold;
+    }
+
+    article{
+         @apply !border !border-pink-600 !p-2 !m-1;
+    }
+}

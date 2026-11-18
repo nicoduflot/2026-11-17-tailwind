@@ -31,7 +31,7 @@
     <main class="container mx-auto p-2">
         <h1>Lignes et colonnes</h1>
         <aside>
-            <ul>
+            <ul class="toc">
                 <li>
                     <a class="underline font-bold hover:text-blue-600" href="#creer-composants">Créer des composants</a>
                 </li>
@@ -44,8 +44,8 @@
             </ul>
         </aside>
         <section>
-            <article class="border border-pink-600 p-2 m-1">
-                <header class="text-2xl font-bold">
+            <article>
+                <header>
                     <h2 id="creer-composants">Créer des composants</h2>
                 </header>
                 <p>
@@ -153,8 +153,8 @@ src/
 }
 </code></pre>
             </article>
-            <article class="border border-pink-600 p-2 m-1">
-                <header class="text-2xl font-bold">
+            <article>
+                <header>
                     <h2 id="integrer-composants">Intégrer les composants</h2>
                 </header>
                 <p>
@@ -174,7 +174,7 @@ src/
 @import "./components/navigation.css";
 @import "./components/typography.css";
 </code></pre>
-                <ol class="list-decimal list-inside space-y-2">
+                <ol>
                     <li>
                         tailwindcss/theme.css : Le socle des "Design Tokens" (Variables CSS) <br />
                         Ce fichier contient toutes les variables CSS par défaut de Tailwind (les couleurs comme --color-blue-600, les espacements, les tailles de police, les ombres, les points de rupture pour le responsive, etc.).
@@ -195,11 +195,94 @@ src/
                     <button class="btn btn-outline-primary">button.btn.btn-outline-primary</button> 
                 </p>
             </article>
-            <article class="border border-pink-600 p-2 m-1">
-                <header class="text-2xl font-bold">
+            <article>
+                <header>
                     <h2 id="extraire-composants">Extraire les composants</h2>
                 </header>
-                
+                <p>
+                    L'extraction de composant est une technique qui consiste à déplacer les classes utilitaires répétitives de votre HTML vers un fichier CSS dédié, en les regroupant sous une classe sémantique (ici, .navigation).
+                </p>
+                <ol>
+                    <li>
+                        Le HTML s'allège : Votre balisage n'est plus pollué par une longue suite de classes utilitaires (md:flex, flex-wrap, block, etc.). Il devient plus propre, plus lisible et se concentre uniquement sur la structure.
+                    </li>
+                    <li>
+                        Le CSS centralise la logique : Grâce au système d'imbrication (nesting) et à la directive @apply, vous ciblez directement les enfants (ul > li > a) depuis votre classe parente .navigation. Si vous devez modifier le design de votre barre de navigation plus tard, vous le faites à un seul endroit dans votre fichier CSS.
+                    </li>
+                </ol>
+<pre><code>
+<span class="text-green-900">// navigation.css</span>
+@layer components {
+    nav.navigation ul{
+        @apply md:flex flex-wrap justify-start mb-0;
+        li{
+            a{
+                @apply block !ps-2 !pe-2;
+            }
+        }
+    }
+}
+
+<span class="text-green-900">// composants.html</span>
+&lt;nav class="navigation bg-gray-900 text-gray-50"&gt;
+    &lt;div class="container mx-auto p-2"&gt;
+        &lt;ul&gt;
+            &lt;li class="hover:bg-gray-50 hover:text-gray-900"&gt;
+                &lt;a href="./index.html" title="installation et bases"&gt;Tailwind&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="hover:bg-gray-50 hover:text-gray-900"&gt;
+                &lt;a href="./row.html" title="Le système lignes - colonnes"&gt;Lignes - Colonnes&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="hover:bg-gray-50 hover:text-gray-900"&gt;
+                &lt;a href="./composants.html" title="Les composants de tailwind"&gt;Composants&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+            </article>
+            <article>
+                <header>
+                    <h2 id="customisation-composants">Customisation avec les composants</h2>
+                </header>
+                <p>
+                    cs-classes.css : Définition des composants sémantiques (@layer components). <br />
+                    Ce fichier sert à créer des classes personnalisées et réutilisables (comme .site-title).
+                </p>
+                <ul>
+                    <li>Le principe : On y regroupe des classes utilitaires (@apply text-4xl font-bold) et/ou du CSS pur (line-height: 1.5;) sous un nom de classe unique. C'est idéal pour éviter de surcharger le code HTML avec de longues listes d'utilitaires pour des éléments globaux ou récurrents.</li>
+                </ul>
+                <p>
+                    typography.css : Surcharge des balises HTML natives (@layer base)<br />
+                    Comme l'indique le commentaire, lorsque vous modifiez le comportement par défaut de balises HTML brutes (h1, p, code, pre), il est recommandé de les placer dans un bloc @layer base.
+                </p>
+                <ul>
+                    <li>
+                        Le principe : C'est ici que vous redéfinissez le Preflight (le reset CSS de Tailwind). Vous appliquez des styles globaux à tous vos paragraphes, titres ou blocs de code sans avoir à ajouter de classes dans votre HTML. Les modificateurs ! (!important) et les valeurs arbitraires ([1rem]) y sont utilisés pour forcer ces comportements de typographie de manière cohérente à l'échelle de tout le site.
+                    </li>
+                </ul>
+                <p>
+                    cs-input.css : Le fichier d'orchestration (Point d'entrée)<br />
+                    Ce fichier centralise l'ensemble de votre architecture CSS grâce à une approche granulaire :
+                </p>
+                <ul>
+                    <li>Les briques de Tailwind : Il importe d'abord le dictionnaire de variables (theme.css), le reset de base (preflight), puis le générateur de classes utilitaires (utilities.css).</li>
+                    <li>
+                        Vos modules personnalisés : Il intègre ensuite vos composants (buttons.css, navigation.css, cs-classes.css) et vos styles de base globaux (typography.css).
+                    </li>
+                    <li>
+                        L'intérêt : L'ordre des @import est crucial. En plaçant vos fichiers personnalisés à la fin, vous garantissez que vos règles et vos composants ont la priorité et s'appuient correctement sur tout l'écosystème Tailwind.
+                    </li>
+                </ul>
+                <h3>@layer base vs @layer components</h3>
+                <ol>
+                    <li>
+                        @layer base est prévu pour les balises HTML brutes : C'est ici que l'on surcharge le Preflight (les styles par défaut des éléments h1, p, a, code sans classe).
+                    </li>
+                    <li>
+                        @layer components est réservé aux classes réutilisables : Il sert à définir des motifs d'interface nommés, comme votre .site-title (ou .btn, .card).
+                    </li>
+                </ol>
             </article>
         </section>
     </main>
